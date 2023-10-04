@@ -1,0 +1,22 @@
+.MovieCard{
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    border: 1px solid gold;
+    margin: 10px;    
+     
+}
+
+img:hover{
+    transform: scale(1.1);
+	transition: 0.8s ease-in-out; 
+    cursor: pointer; 
+}
+
+.text{
+    text-align: left;
+    color: black;
+}
