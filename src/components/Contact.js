@@ -1,5 +1,7 @@
+import AddTask from './AddTask';
 import Task from './Task';
 import { useState } from "react";
+import Button from './Button';
 
 const Contact = () =>{
     const [tasks, setTask] = useState([
@@ -25,22 +27,49 @@ const Contact = () =>{
                 
                 }
         ])
+        const AddHandler= (task) =>{
+            const id = Math.floor(Math.random()* 10000)+ 1
+            const newTask = {id, ...task} //This is spread operator. It is simply concating id to input data 'task'.
+            setTask([...tasks, newTask])//This is also spread operator. It is adding newTask object to an existing task array
+                                            //of objects.
+        }
 
-    const ClickHandler = (e) =>{
-    var data = e;
-    console.log(data);
+    
+    
+    const DeleteHandler = (id) =>{
+        setTask(tasks.filter((task) => task.id !== id))
+    };
+
+    const ToggleReminder  = (id) =>{
+        setTask(tasks.map((task) => task.id == id ?
+        {...task, reminder: !task.reminder} : task
+        ))
     };
     
+    const [Text, setText] = useState(true);
+
+    const ChangeText = () =>{
+        setText(!Text)
+    }
+
+    
     return (
-        <div className="card">
+        <div>
             <h3>This is contact page</h3>
-           
-        <input type="text" placeholder="Enter text" ></input>
-        <button onClick={ClickHandler}>Send</button>
-        
-        {tasks.map((task) =>(
-                <Task key = {task.id} task = {task} />
-            ))}
+           <Button color = {Text} onChange ={ChangeText}  text = {Text} />
+          
+           {!Text && <AddTask onAdd = {AddHandler} /> }  
+            
+         {tasks.length > 0 ? 
+            tasks.map((task) =>(
+                <Task key = {task.id} 
+                task = {task} 
+                onDelete = {DeleteHandler} 
+                onToggle = {ToggleReminder} 
+                />
+            )) :<p> "Not Task found" </p>
+         }  
+            
         </div>
     );
 }

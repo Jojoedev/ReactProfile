@@ -20,3 +20,34 @@ img:hover{
     text-align: left;
     color: black;
 }
+
+.header{
+    color: red;
+    border: 1px blueviolet solid;
+    border-width: 30px;
+    width: 500px;
+    height: 200px;
+    margin-left: 500px;
+    margin-top: 30px;
+    
+}
+
+.deleteIcon:hover{
+ cursor: pointer;
+}
+
+.form{
+    padding: 5px;
+    font-size: 20px;
+    color: red;
+    border: 5px teal solid;
+    width: 500px;
+    height: 150px;
+    margin-left: 500px;
+    margin-top: 20px;
+    
+}
+
+.btn{
+    font-size: 20px;
+}
